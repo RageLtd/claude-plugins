@@ -15,6 +15,7 @@ Then install any plugin:
 ```
 /plugin install goldfish@rageltd
 /plugin install claude-rules@rageltd
+/plugin install cartographer@rageltd
 ```
 
 ## Available Plugins
@@ -23,6 +24,7 @@ Then install any plugin:
 |--------|-------------|
 | [goldfish](https://github.com/RageLtd/Goldfish) | Persistent agent memory — because your AI shouldn't have the memory of a goldfish |
 | [claude-rules](https://github.com/RageLtd/claude-rules) | Distributable coding standards and workflow rules |
+| [cartographer](https://github.com/RageLtd/cartographer) | Codebase structure mapping via Tree-sitter AST parsing |
 
 ## How it works
 

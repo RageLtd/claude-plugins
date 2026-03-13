@@ -27,6 +27,16 @@
         "ref": "v0.6.0"
       },
       "description": "Distributable coding standards and workflow rules for Claude Code sessions"
+    },
+    {
+      "name": "cartographer",
+      "version": "0.1.0",
+      "source": {
+        "source": "github",
+        "repo": "RageLtd/cartographer",
+        "ref": "v0.1.0"
+      },
+      "description": "Codebase structure mapping via Tree-sitter AST parsing. Builds import graphs and answers dependency queries."
     }
   ]
 }
