@@ -30,11 +30,11 @@
     },
     {
       "name": "cartographer",
-      "version": "0.1.0",
+      "version": "0.3.0",
       "source": {
         "source": "github",
         "repo": "RageLtd/cartographer",
-        "ref": "v0.1.0"
+        "ref": "v0.3.0"
       },
       "description": "Codebase structure mapping via Tree-sitter AST parsing. Builds import graphs and answers dependency queries."
     }
