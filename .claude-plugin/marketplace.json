@@ -43,9 +43,11 @@
       "source": {
         "source": "git-subdir",
         "url": "https://github.com/RageLtd/mimir.git",
-        "path": "packages/cc-plugin"
+        "path": "packages/cc-plugin",
+        "ref": "cc-plugin/v0.1.0"
       },
-      "description": "Mimir persona and runtime for Claude Code."
+      "description": "Mimir persona and runtime for Claude Code.",
+      "version": "0.1.0"
     }
   ]
 }
