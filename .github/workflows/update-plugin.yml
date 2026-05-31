@@ -11,6 +11,9 @@ on:
       version:
         description: "New version (e.g. 3.2.0)"
         required: true
+      ref:
+        description: "Git ref/tag to pin (defaults to v<version>; e.g. cc-plugin/v0.1.0 for monorepo subdir plugins)"
+        required: false
 
 permissions:
   contents: write
@@ -28,23 +31,31 @@ jobs:
         env:
           DISPATCH_PLUGIN: ${{ github.event.client_payload.plugin_name }}
           DISPATCH_VERSION: ${{ github.event.client_payload.version }}
+          DISPATCH_REF: ${{ github.event.client_payload.ref }}
           INPUT_PLUGIN: ${{ github.event.inputs.plugin_name }}
           INPUT_VERSION: ${{ github.event.inputs.version }}
+          INPUT_REF: ${{ github.event.inputs.ref }}
         run: |
           PLUGIN="${DISPATCH_PLUGIN:-$INPUT_PLUGIN}"
           VERSION="${DISPATCH_VERSION:-$INPUT_VERSION}"
+          REF="${DISPATCH_REF:-$INPUT_REF}"
+          # Default to v<version> so single-repo plugins (goldfish, cartographer)
+          # keep working without sending a ref.
+          REF="${REF:-v$VERSION}"
           echo "plugin=$PLUGIN" >> $GITHUB_OUTPUT
           echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "Updating $PLUGIN to v$VERSION"
+          echo "ref=$REF" >> $GITHUB_OUTPUT
+          echo "Updating $PLUGIN to v$VERSION (ref $REF)"
 
       - name: Update marketplace.json
         env:
           PLUGIN: ${{ steps.info.outputs.plugin }}
           VERSION: ${{ steps.info.outputs.version }}
+          REF: ${{ steps.info.outputs.ref }}
         run: |
           MARKETPLACE=".claude-plugin/marketplace.json"
 
-          jq --arg name "$PLUGIN" --arg ver "$VERSION" --arg ref "v$VERSION" \
+          jq --arg name "$PLUGIN" --arg ver "$VERSION" --arg ref "$REF" \
             '(.plugins[] | select(.name == $name)) |= (.version = $ver | .source.ref = $ref)' \
             "$MARKETPLACE" > tmp.json && mv tmp.json "$MARKETPLACE"
 

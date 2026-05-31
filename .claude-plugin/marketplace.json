@@ -37,6 +37,15 @@
         "ref": "v1.2.0"
       },
       "description": "Codebase structure mapping via Tree-sitter AST parsing. Builds import graphs and answers dependency queries."
+    },
+    {
+      "name": "mimir-cc",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/RageLtd/mimir.git",
+        "path": "packages/cc-plugin"
+      },
+      "description": "Mimir persona and runtime for Claude Code."
     }
   ]
 }
