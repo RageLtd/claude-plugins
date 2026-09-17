@@ -20,11 +20,11 @@
     },
     {
       "name": "claude-rules",
-      "version": "1.2.1",
+      "version": "1.2.2",
       "source": {
         "source": "github",
         "repo": "RageLtd/claude-rules",
-        "ref": "v1.2.1"
+        "ref": "v1.2.2"
       },
       "description": "Distributable coding standards and workflow rules for Claude Code sessions"
     },
